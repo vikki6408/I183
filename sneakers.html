@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SneakZone - Boutique de Sneakers Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .sneaker-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+        }
+        .price-tag {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #1d4ed8, #1e40af);
+        }
+        .cart-badge {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="text-3xl">👟</div>
+                    <h1 class="text-2xl font-bold text-gray-800">SneakZone</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#accueil" class="text-gray-700 hover:text-blue-600 transition duration-200">Accueil</a>
+                    <a href="#nouveautes" class="text-gray-700 hover:text-blue-600 transition duration-200">Nouveautés</a>
+                    <a href="#marques" class="text-gray-700 hover:text-blue-600 transition duration-200">Marques</a>
+                    <a href="#promos" class="text-gray-700 hover:text-blue-600 transition duration-200">Promos</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-700 hover:text-blue-600 transition duration-200">
+                        <span class="text-2xl">🔍</span>
+                    </button>
+                    <button class="text-gray-700 hover:text-blue-600 transition duration-200">
+                        <span class="text-2xl">❤️</span>
+                    </button>
+                    <button onclick="toggleCart()" class="relative text-gray-700 hover:text-blue-600 transition duration-200">
+                        <span class="text-2xl">🛒</span>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center cart-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold mb-6">Les Sneakers les Plus Hot</h2>
+            <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+                Découvrez notre collection exclusive de sneakers premium. Des dernières sorties aux classiques intemporels.
+            </p>
+            <button class="btn-primary text-white px-8 py-4 rounded-full text-lg font-medium transition duration-200 shadow-lg hover:shadow-xl">
+                Shop Maintenant
+            </button>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="nouveautes" class="container mx-auto px-6 py-16">
+        <h3 class="text-4xl font-bold text-center text-gray-800 mb-12">Nouveautés</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Product 1 -->
+            <div class="sneaker-card rounded-2xl p-6 shadow-lg card-hover">
+                <div class="text-center mb-4">
+                    <div class="text-8xl mb-4">👟</div>
+                    <div class="text-sm text-gray-500 mb-2">NIKE</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Air Jordan 1 Retro High</h4>
+                    <p class="text-gray-600 text-sm mb-4">Chicago - Rouge/Blanc/Noir</p>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <div class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">
+                        179€
+                    </div>
+                    <div class="text-sm text-gray-500">Tailles: 38-46</div>
+                </div>
+                <button onclick="addToCart('Air Jordan 1', 179)" class="w-full btn-primary text-white py-3 rounded-lg font-medium transition duration-200 hover:shadow-lg">
+                    Ajouter au Panier
+                </button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="sneaker-card rounded-2xl p-6 shadow-lg card-hover">
+                <div class="text-center mb-4">
+                    <div class="text-8xl mb-4">🏃</div>
+                    <div class="text-sm text-gray-500 mb-2">ADIDAS</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Yeezy Boost 350 V2</h4>
+                    <p class="text-gray-600 text-sm mb-4">Zebra - Blanc/Noir</p>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <div class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">
+                        249€
+                    </div>
+                    <div class="text-sm text-gray-500">Tailles: 36-45</div>
+                </div>
+                <button onclick="addToCart('Yeezy Boost 350 V2', 249)" class="w-full btn-primary text-white py-3 rounded-lg font-medium transition duration-200 hover:shadow-lg">
+                    Ajouter au Panier
+                </button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="sneaker-card rounded-2xl p-6 shadow-lg card-hover">
+                <div class="text-center mb-4">
+                    <div class="text-8xl mb-4">⚡</div>
+                    <div class="text-sm text-gray-500 mb-2">NIKE</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Air Max 90</h4>
+                    <p class="text-gray-600 text-sm mb-4">Triple White</p>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <div class="price-tag text-white px-3 py-1 rounded-full text-sm font-bold">
+                        129€
+                    </div>
+                    <div class="text-sm text-gray-500">Tailles: 37-47</div>
+                </div>
+                <button onclick="addToCart('Air Max 90', 129)" class="w-full btn-primary text-white py-3 rounded-lg font-medium transition duration-200 hover:shadow-lg">
+                    Ajouter au Panier
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section id="marques" class="bg-white py-16">
+        <div class="container mx-auto px-6">
+            <h3 class="text-4xl font-bold text-center text-gray-800 mb-12">Nos Marques</h3>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center p-8 rounded-2xl bg-gray-50 card-hover">
+                    <div class="text-6xl mb-4">✓</div>
+                    <h4 class="text-xl font-bold text-gray-800">Nike</h4>
+                    <p class="text-gray-600 text-sm">Just Do It</p>
+                </div>
+                <div class="text-center p-8 rounded-2xl bg-gray-50 card-hover">
+                    <div class="text-6xl mb-4">⚡</div>
+                    <h4 class="text-xl font-bold text-gray-800">Adidas</h4>
+                    <p class="text-gray-600 text-sm">3 Stripes</p>
+                </div>
+                <div class="text-center p-8 rounded-2xl bg-gray-50 card-hover">
+                    <div class="text-6xl mb-4">🔥</div>
+                    <h4 class="text-xl font-bold text-gray-800">Jordan</h4>
+                    <p class="text-gray-600 text-sm">Jumpman</p>
+                </div>
+                <div class="text-center p-8 rounded-2xl bg-gray-50 card-hover">
+                    <div class="text-6xl mb-4">⭐</div>
+                    <h4 class="text-xl font-bold text-gray-800">Converse</h4>
+                    <p class="text-gray-600 text-sm">All Star</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Section -->
+    <section id="promos" class="container mx-auto px-6 py-16">
+        <div class="bg-gradient-to-r from-red-500 to-pink-500 rounded-3xl p-12 text-white text-center">
+            <h3 class="text-4xl font-bold mb-6">🔥 FLASH SALE 🔥</h3>
+            <p class="text-xl mb-8">Jusqu'à -50% sur une sélection de sneakers</p>
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                    <div class="text-4xl mb-2">👟</div>
+                    <div class="text-2xl font-bold">-30%</div>
+                    <div class="text-sm">Nike Air Force 1</div>
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                    <div class="text-4xl mb-2">🏃</div>
+                    <div class="text-2xl font-bold">-40%</div>
+                    <div class="text-sm">Adidas Stan Smith</div>
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                    <div class="text-4xl mb-2">⚡</div>
+                    <div class="text-2xl font-bold">-50%</div>
+                    <div class="text-sm">Converse Chuck Taylor</div>
+                </div>
+            </div>
+            <button class="bg-white text-red-500 px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-100 transition duration-200">
+                Voir les Promos
+            </button>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl mb-4">🚚</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Livraison Gratuite</h4>
+                    <p class="text-gray-600">Dès 75€ d'achat</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl mb-4">🔄</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Retour Gratuit</h4>
+                    <p class="text-gray-600">30 jours pour changer d'avis</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl mb-4">🛡️</div>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Authenticité Garantie</h4>
+                    <p class="text-gray-600">100% authentique ou remboursé</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed right-0 top-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6 border-b">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-bold">Mon Panier</h3>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">
+                    <span class="text-2xl">×</span>
+                </button>
+            </div>
+        </div>
+        <div id="cartItems" class="p-6 flex-1 overflow-y-auto">
+            <p class="text-gray-500 text-center">Votre panier est vide</p>
+        </div>
+        <div class="p-6 border-t">
+            <div class="flex justify-between items-center mb-4">
+                <span class="font-bold">Total:</span>
+                <span id="cartTotal" class="font-bold text-xl">0€</span>
+            </div>
+            <button class="w-full btn-primary text-white py-3 rounded-lg font-medium">
+                Commander
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40" onclick="toggleCart()"></div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="text-3xl">👟</span>
+                        <h4 class="text-xl font-bold">SneakZone</h4>
+                    </div>
+                    <p class="text-gray-400">La référence sneakers depuis 2020</p>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Shop</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Nouveautés</a></li>
+                        <li><a href="#" class="hover:text-white">Homme</a></li>
+                        <li><a href="#" class="hover:text-white">Femme</a></li>
+                        <li><a href="#" class="hover:text-white">Enfant</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Support</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                        <li><a href="#" class="hover:text-white">Guide des tailles</a></li>
+                        <li><a href="#" class="hover:text-white">Livraison</a></li>
+                        <li><a href="#" class="hover:text-white">Retours</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Suivez-nous</h5>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-blue-400">📘</a>
+                        <a href="#" class="text-2xl hover:text-pink-400">📷</a>
+                        <a href="#" class="text-2xl hover:text-blue-300">🐦</a>
+                        <a href="#" class="text-2xl hover:text-red-400">📺</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 SneakZone. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        let cartTotal = 0;
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            cartTotal += price;
+            updateCartDisplay();
+            
+            // Show success message
+            showNotification(`${productName} ajouté au panier !`);
+        }
+
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotalElement = document.getElementById('cartTotal');
+            
+            cartCount.textContent = cart.length;
+            cartTotalElement.textContent = cartTotal + '€';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center">Votre panier est vide</p>';
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="flex justify-between items-center py-3 border-b">
+                        <div>
+                            <h4 class="font-medium">${item.name}</h4>
+                            <p class="text-sm text-gray-500">${item.price}€</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700">
+                            🗑️
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function removeFromCart(index) {
+            cartTotal -= cart[index].price;
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('cartOverlay');
+            
+            if (sidebar.classList.contains('translate-x-full')) {
+                sidebar.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9728b64833e927b2',t:'MTc1NTc2NDQzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
